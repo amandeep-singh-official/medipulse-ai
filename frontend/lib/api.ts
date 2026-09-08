@@ -8,6 +8,22 @@ export async function getAuthHeader(): Promise<string> {
   return `Bearer ${session.access_token}`
 }
 
+async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs = 15000): Promise<Response> {
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), timeoutMs)
+  try {
+    const res = await fetch(url, { ...options, signal: options.signal || controller.signal })
+    return res
+  } catch (err: any) {
+    if (err.name === 'AbortError') {
+      throw new Error('Connection timed out. The backend server might be starting up, please wait a moment.')
+    }
+    throw err
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
 async function handleResponse(res: Response, defaultMessage: string) {
   if (!res.ok) {
     let errorDetail = defaultMessage
@@ -33,7 +49,7 @@ export async function uploadReport(file: File, category: string, reportDate: str
   form.append('report_date', reportDate)
   form.append('lab_name', labName)
 
-  const res = await fetch(`${API_URL}/api/reports/upload`, {
+  const res = await fetchWithTimeout(`${API_URL}/api/reports/upload`, {
     method: 'POST',
     headers: { Authorization: auth },
     body: form,
@@ -43,7 +59,7 @@ export async function uploadReport(file: File, category: string, reportDate: str
 
 export async function extractReport(reportId: string) {
   const auth = await getAuthHeader()
-  const res = await fetch(`${API_URL}/api/reports/${reportId}/extract`, {
+  const res = await fetchWithTimeout(`${API_URL}/api/reports/${reportId}/extract`, {
     method: 'POST',
     headers: { Authorization: auth },
   })
@@ -52,7 +68,7 @@ export async function extractReport(reportId: string) {
 
 export async function confirmReport(reportId: string, biomarkers: any[]) {
   const auth = await getAuthHeader()
-  const res = await fetch(`${API_URL}/api/reports/${reportId}/confirm`, {
+  const res = await fetchWithTimeout(`${API_URL}/api/reports/${reportId}/confirm`, {
     method: 'POST',
     headers: { Authorization: auth, 'Content-Type': 'application/json' },
     body: JSON.stringify({ biomarkers }),
@@ -62,7 +78,7 @@ export async function confirmReport(reportId: string, biomarkers: any[]) {
 
 export async function getDashboard() {
   const auth = await getAuthHeader()
-  const res = await fetch(`${API_URL}/api/reports/dashboard`, {
+  const res = await fetchWithTimeout(`${API_URL}/api/reports/dashboard`, {
     headers: { Authorization: auth },
   })
   if (!res.ok) throw new Error('Failed to load dashboard')
@@ -71,7 +87,7 @@ export async function getDashboard() {
 
 export async function getTrends(biomarkerName: string) {
   const auth = await getAuthHeader()
-  const res = await fetch(`${API_URL}/api/reports/trends/${encodeURIComponent(biomarkerName)}`, {
+  const res = await fetchWithTimeout(`${API_URL}/api/reports/trends/${encodeURIComponent(biomarkerName)}`, {
     headers: { Authorization: auth },
   })
   if (!res.ok) throw new Error('Failed to load trends')
@@ -80,7 +96,7 @@ export async function getTrends(biomarkerName: string) {
 
 export async function getRecommendations() {
   const auth = await getAuthHeader()
-  const res = await fetch(`${API_URL}/api/reports/recommendations`, {
+  const res = await fetchWithTimeout(`${API_URL}/api/reports/recommendations`, {
     headers: { Authorization: auth },
   })
   if (!res.ok) throw new Error('Failed to load recommendations')
@@ -89,7 +105,7 @@ export async function getRecommendations() {
 
 export async function deleteUserAccount(): Promise<{ status: string; message: string }> {
   const auth = await getAuthHeader()
-  const res = await fetch(`${API_URL}/api/users/delete-account`, {
+  const res = await fetchWithTimeout(`${API_URL}/api/users/delete-account`, {
     method: 'POST',
     headers: { Authorization: auth },
   })
@@ -98,7 +114,7 @@ export async function deleteUserAccount(): Promise<{ status: string; message: st
 
 export async function getChatSuggestions(): Promise<{ suggestions: string[]; has_data: boolean }> {
   const auth = await getAuthHeader()
-  const res = await fetch(`${API_URL}/api/chat/suggestions`, {
+  const res = await fetchWithTimeout(`${API_URL}/api/chat/suggestions`, {
     headers: { Authorization: auth },
   })
   if (!res.ok) throw new Error('Failed to load chat suggestions')
