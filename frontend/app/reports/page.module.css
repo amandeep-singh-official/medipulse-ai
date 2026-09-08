@@ -1,0 +1,174 @@
+/* ── Page Layout ── */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.pageTitle {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+.pageSubtitle {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ── Empty State ── */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 72px 24px;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.emptyIcon {
+  width: 68px;
+  height: 68px;
+  border-radius: 20px;
+  background: var(--bio-emerald-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emptyState h2 { font-size: 20px; font-weight: 800; }
+.emptyState p { color: var(--text-secondary); max-width: 320px; font-size: 14px; line-height: 1.6; }
+
+/* ── Report List ── */
+.reportList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Report Card ── */
+.reportCard {
+  padding: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.reportCard:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: var(--shadow-card);
+}
+
+.reportHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.reportHeader:hover {
+  background: var(--bg-subtle);
+}
+
+.reportEmoji {
+  font-size: 26px;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bio-emerald-glow);
+  border-radius: 12px;
+}
+
+.reportInfo { flex: 1; min-width: 0; }
+.reportTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.reportMeta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.reportMeta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chevron {
+  transition: transform 0.25s ease;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+.chevronOpen { transform: rotate(90deg); }
+
+/* ── Biomarker List (expanded) ── */
+.bioList {
+  padding: 0 20px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.bioListHeader {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr;
+  gap: 8px;
+  padding: 10px 0 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: var(--font-mono);
+}
+
+.bioRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr;
+  gap: 8px;
+  padding: 9px 0;
+  border-top: 1px solid var(--border-subtle);
+  align-items: center;
+}
+.bioRow:first-of-type { border-top: none; }
+
+.bioName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.bioVal {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+.bioUnit {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 580px) {
+  .bioListHeader, .bioRow { grid-template-columns: 2fr 1fr 1fr; }
+  .bioListHeader span:last-child, .bioRow span:last-child { display: none; }
+}

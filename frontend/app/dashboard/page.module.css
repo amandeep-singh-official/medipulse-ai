@@ -1,0 +1,670 @@
+/* ── Header ── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.pageTitle {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+.pageSubtitle {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ── Error / Alert Banners ── */
+.errorBanner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: var(--diagnostic-crimson-glow);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.alertBanner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-radius: var(--radius-md);
+  background: var(--diagnostic-crimson-glow);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  font-size: 13.5px;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+.alertDismiss {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.alertDismiss:hover {
+  color: var(--text-primary);
+  background: var(--bg-subtle);
+}
+
+.retryBtn {
+  margin-left: auto;
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-secondary) !important;
+}
+.retryBtn:hover {
+  border-color: var(--bio-emerald) !important;
+  color: var(--bio-emerald) !important;
+}
+
+/* ── Empty State ── */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 80px 24px;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.emptyIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: var(--bio-emerald-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emptyState h2 { font-size: 22px; font-weight: 800; }
+.emptyState p { color: var(--text-secondary); max-width: 340px; font-size: 15px; line-height: 1.6; }
+
+/* ── 2-Column Dashboard Grid ── */
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* ── Main Column ── */
+.mainColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* ── Stat Cards ── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.statCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 14px;
+  text-align: center;
+  cursor: default;
+}
+.statIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.statValue {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+.statLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* ── Hero Chart ── */
+.heroChartCard {
+  padding: 20px;
+}
+.heroChartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+.heroChartTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.heroChartSubtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.heroChartUnit {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--bg-subtle);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+.heroChartError {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: var(--diagnostic-crimson-glow);
+  border-radius: var(--radius-md);
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.heroChartEmpty {
+  text-align: center;
+  padding: 40px 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--bg-subtle);
+  border-radius: var(--radius-md);
+  margin-top: 12px;
+}
+
+/* Biomarker switcher pills */
+.pillScroller {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-bottom: 14px;
+  scrollbar-width: thin;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+  font-family: var(--font-sans);
+  flex-shrink: 0;
+}
+.pill:hover {
+  border-color: var(--pill-color, var(--bio-emerald));
+  color: var(--pill-color, var(--bio-emerald));
+  background: var(--bg-card);
+}
+.pillActive {
+  border-color: var(--pill-color, var(--bio-emerald));
+  background: var(--bg-card);
+  color: var(--pill-color, var(--bio-emerald));
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.pillDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Biomarker Section ── */
+.bioSection {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.bioSectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Filter Tabs */
+.tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-subtle);
+  padding: 3px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font-sans);
+}
+.tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+.tabActive {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+.tabCount {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-subtle);
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+  min-width: 20px;
+  text-align: center;
+}
+.tabActive .tabCount {
+  background: var(--border);
+}
+.tabEmpty {
+  font-size: 13px;
+  color: var(--text-muted);
+  padding: 32px 18px;
+}
+
+/* ── Biomarker Table ── */
+.bioTable {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: visible; /* Changed from hidden so tooltips aren't clipped */
+  box-shadow: var(--shadow-sm);
+}
+
+/* Column layout: [name 2fr] [value 1fr] [ref 1.6fr] [status 1.2fr] [action 0.5fr] */
+.bioTableHead,
+.bioRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.6fr 1.2fr 0.5fr;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  width: 100%;
+  text-align: left;
+}
+
+.bioTableHead {
+  padding-top: 11px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-subtle);
+}
+.bioTableHead span {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: var(--font-mono);
+}
+
+.bioRow {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border: none;
+  border-bottom: 1px solid var(--border-subtle);
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: background 0.15s ease;
+}
+.bioRow:last-child {
+  border-bottom: none;
+  border-bottom-left-radius: calc(var(--radius-lg) - 1px);
+  border-bottom-right-radius: calc(var(--radius-lg) - 1px);
+}
+.bioRow:nth-child(even) {
+  background: rgba(0, 0, 0, 0.015);
+}
+[data-theme='dark'] .bioRow:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+.bioRow:hover,
+.bioRow:focus-within {
+  background: var(--bio-emerald-glow);
+  position: relative;
+  z-index: 40;
+}
+.bioRowActive {
+  background: var(--bio-emerald-glow) !important;
+  box-shadow: inset 3px 0 0 var(--bio-emerald);
+}
+
+/* Status dot + Name */
+.bioRowName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Wrapper that is the positioning anchor for the tooltip */
+.bioRowNameWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  z-index: 50;
+}
+
+/* ⓘ info icon — visible only when the name cell is hovered */
+.infoIcon {
+  font-size: 12px;
+  color: var(--text-muted);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  margin-left: 4px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.bioRowNameWrap:hover .infoIcon {
+  opacity: 1;
+}
+
+.bioRowDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Value */
+.bioRowValue {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  letter-spacing: -0.3px;
+}
+.bioRowUnit {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0;
+}
+
+/* Reference range */
+.bioRowRef {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* Trend action */
+.bioRowAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--bio-emerald);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  white-space: nowrap;
+  justify-self: end;
+}
+.bioRow:hover .bioRowAction,
+.bioRowActive .bioRowAction {
+  opacity: 1;
+}
+
+/* ── Right Sidebar ── */
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-right: 2px;
+}
+
+.sideCard {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sideCardTitle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* Sidebar error / empty */
+.sideError {
+  flex-direction: row;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: var(--diagnostic-crimson-glow) !important;
+  border-color: rgba(239,68,68,0.2) !important;
+}
+.sideEmpty {
+  text-align: center;
+  align-items: center;
+}
+.sideEmptyText {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Health Gauge */
+.gaugeWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: -4px 0;
+}
+.gaugeCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -16px;
+}
+.gaugeScore {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.gaugeLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: 2px;
+}
+.gaugeSub {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* AI summary */
+.summaryText {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Reco list */
+.recoList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.recoItem {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+}
+.recoItemTitle {
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.recoItemDesc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+.showMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--bio-emerald);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  font-family: var(--font-sans);
+  transition: opacity 0.15s ease;
+}
+.showMoreBtn:hover { opacity: 0.7; }
+
+/* Positive notes */
+.positiveList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.positiveNote {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  background: var(--badge-optimal-bg);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  line-height: 1.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+  }
+  .sideColumn {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+  .bioSectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  /* Hide table header on mobile */
+  .bioTableHead {
+    display: none;
+  }
+  /* Compact 2-col row on mobile: name | value + status */
+  .bioRow {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    row-gap: 4px;
+    padding: 12px 14px;
+  }
+  /* Name spans full width top row */
+  .bioRowName {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+  /* Value top-right */
+  .bioRowValue {
+    grid-column: 2 / 3;
+    grid-row: 1;
+    text-align: right;
+  }
+  /* Status badge bottom-left */
+  .bioRow > span:nth-child(4) {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+  /* Hide ref range and action on mobile */
+  .bioRowRef,
+  .bioRowAction {
+    display: none;
+  }
+}

@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ── Scientific Editorial & Precision Telemetry Design Tokens ── */
+:root {
+  /* Fonts */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Bio-Emerald Clinical Core */
+  --bio-emerald: #10b981;
+  --bio-emerald-light: #34d399;
+  --bio-emerald-dark: #059669;
+  --bio-emerald-glow: rgba(16, 185, 129, 0.18);
+
+  /* Diagnostic Accents */
+  --diagnostic-amber: #f59e0b;
+  --diagnostic-amber-glow: rgba(245, 158, 11, 0.15);
+  --diagnostic-crimson: #ef4444;
+  --diagnostic-crimson-glow: rgba(239, 68, 68, 0.15);
+  --diagnostic-cobalt: #3b82f6;
+
+  /* Light Theme — Refined Card-on-Gray */
+  --bg: #F3F4F6;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fafaf7;
+  --bg-subtle: #f4f4ee;
+  --border: #e6e6dc;
+  --border-subtle: rgba(0, 0, 0, 0.05);
+
+  --text-primary: #0f141c;
+  --text-secondary: #4a5568;
+  --text-muted: #8c97a8;
+  --text-mono: #2d3748;
+
+  --badge-optimal-bg: #ecfdf5;
+  --badge-optimal-text: #059669;
+  --badge-borderline-bg: #fffbeb;
+  --badge-borderline-text: #b45309;
+  --badge-action-bg: #fef2f2;
+  --badge-action-text: #dc2626;
+
+  /* Softer, more diffuse shadows for premium feel */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-terminal: 0 20px 60px rgba(0, 0, 0, 0.08);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* ── Compatibility Aliases (referenced throughout codebase) ── */
+  --brand: var(--bio-emerald);
+  --success: var(--bio-emerald);
+  --warning: var(--diagnostic-amber);
+  --danger: var(--diagnostic-crimson);
+  --danger-bg: var(--diagnostic-crimson-glow);
+  --warning-bg: var(--diagnostic-amber-glow);
+}
+
+[data-theme='dark'] {
+  /* Dark Theme — Deep Obsidian Charcoal */
+  --bg: #090d14;
+  --bg-card: #0f1522;
+  --bg-card-hover: #141c2c;
+  --bg-subtle: #161e2e;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-mono: #cbd5e1;
+
+  --badge-optimal-bg: rgba(16, 185, 129, 0.12);
+  --badge-optimal-text: #34d399;
+  --badge-borderline-bg: rgba(245, 158, 11, 0.12);
+  --badge-borderline-text: #fbbf24;
+  --badge-action-bg: rgba(239, 68, 68, 0.12);
+  --badge-action-text: #f87171;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-terminal: 0 24px 70px rgba(0, 0, 0, 0.7);
+}
+
+/* ── Reset & Typography ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Monospace Telemetry */
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
+
+/* Editorial Serif Accent */
+.serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Container */
+.container {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Buttons (Precision Clinical Aesthetic) ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--bio-emerald);
+  color: #ffffff;
+  box-shadow: 0 2px 10px var(--bio-emerald-glow);
+}
+.btn-primary:hover {
+  background: var(--bio-emerald-dark);
+  box-shadow: 0 4px 18px var(--bio-emerald-glow);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+  background: var(--border);
+  color: var(--text-primary);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+}
+.btn-ghost:hover {
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
+.btn-telemetry {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.btn-telemetry:hover {
+  border-color: var(--bio-emerald);
+  color: var(--bio-emerald);
+}
+
+.btn-lg {
+  padding: 14px 28px;
+  font-size: 15px;
+  border-radius: var(--radius-md);
+}
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ── Status Badges & Telemetry Tags ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.badge-optimal, .badge-normal {
+  background: var(--badge-optimal-bg);
+  color: var(--badge-optimal-text);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.badge-borderline {
+  background: var(--badge-borderline-bg);
+  color: var(--badge-borderline-text);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.badge-action, .badge-danger {
+  background: var(--badge-action-bg);
+  color: var(--badge-action-text);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Pulse indicator */
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--bio-emerald);
+  display: inline-block;
+  position: relative;
+}
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background-color: var(--bio-emerald);
+  opacity: 0.5;
+  animation: pulse-ring 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ── Cards & Surfaces ── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: var(--shadow-card);
+}
+
+/* Telemetry Card with Monospace Header */
+.telemetry-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Form Inputs ── */
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.input:focus {
+  border-color: var(--bio-emerald);
+  box-shadow: 0 0 0 3px var(--bio-emerald-glow);
+}
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+label.field-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+/* ── Subtle Geometric Grid Background ── */
+.bg-grid {
+  background-image: 
+    linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ── Loading Spinner ── */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-top-color: var(--bio-emerald);
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Skeleton Shimmer ── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-subtle) 25%,
+    var(--border) 50%,
+    var(--bg-subtle) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius-md);
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Section Title ── */
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+  margin-bottom: 16px;
+}
+
+/* ── Grid Utilities ── */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 99px;
+}
+
+/* ── Precision Clinical Dossier Print Isolation ── */
+#dossier-print-portal {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm 10mm 10mm;
+  }
+
+  /* Reset body and document flow for clean vector printing */
+  html, body {
+    background: #ffffff !important;
+    color: #0f141c !important;
+    font-size: 10.5pt;
+    line-height: 1.35;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* HIDE THE ENTIRE WEBPAGE: Every direct child of body EXCEPT the print portal */
+  body > *:not(#dossier-print-portal) {
+    display: none !important;
+  }
+
+  /* Ensure the print portal is displayed cleanly, taking full A4 width */
+  #dossier-print-portal {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #0f141c !important;
+    overflow: visible !important;
+  }
+
+  /* Prevent awkward page cutoffs */
+  .dossier-row,
+  .dossier-card,
+  .dossier-section,
+  tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
+

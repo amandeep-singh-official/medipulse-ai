@@ -1,0 +1,142 @@
+/* ──────────────────────────────────────────────────────────────────────
+   BiomarkerTooltip.module.css
+   Floating clinical knowledge card — optimized positioning with smart flip
+   ────────────────────────────────────────────────────────────────────── */
+
+.tooltip {
+  position: absolute;
+  left: 0;
+  z-index: 500;
+
+  width: 300px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.15),
+    0 12px 36px -4px rgba(0, 0, 0, 0.38),
+    0 0 0 1px var(--border);
+
+  /* Allow mouse events so the tooltip blocks hover states of the rows behind it */
+  user-select: none;
+}
+
+/* Positioned on upper side (default & when scrolling down) */
+.tooltipTop {
+  bottom: calc(100% + 10px);
+}
+
+/* Positioned on lower side (fallback when row is at the very top of viewport) */
+.tooltipBottom {
+  top: calc(100% + 10px);
+}
+
+/* Prevent tooltip overflowing the right edge on narrow screens */
+@media (max-width: 768px) {
+  .tooltip {
+    width: 260px;
+  }
+}
+
+/* ── System badge ── */
+.systemBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  margin-bottom: 8px;
+}
+
+.systemIcon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.systemName {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--bio-emerald);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+/* ── Full clinical name ── */
+.fullName {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+/* ── Horizontal divider ── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 10px;
+}
+
+/* ── Plain-English description ── */
+.description {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+/* ── Clinical significance block ── */
+.significance {
+  background: var(--bg-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  border: 1px solid var(--border-subtle);
+}
+
+.significanceLabel {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.significanceText {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* ── Arrow pointers ── */
+.arrow {
+  position: absolute;
+  left: 20px;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-card);
+  transform: rotate(45deg);
+}
+
+/* When tooltip is on TOP, arrow sits at bottom edge pointing DOWN */
+.arrowTop {
+  bottom: -6px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  border-radius: 0 0 2px 0;
+}
+
+/* When tooltip is on BOTTOM, arrow sits at top edge pointing UP */
+.arrowBottom {
+  top: -6px;
+  border-left: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  border-radius: 2px 0 0 0;
+}
