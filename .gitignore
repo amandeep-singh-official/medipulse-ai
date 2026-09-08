@@ -53,3 +53,7 @@ blob-report/
 frontend/blob-report/
 playwright/.cache/
 frontend/playwright/.cache/
+
+# Netlify
+.netlify/
+frontend/.netlify/
